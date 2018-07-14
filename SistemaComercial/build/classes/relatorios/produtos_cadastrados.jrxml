@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="produtos_cadastrados" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="eff4b2ca-61b0-480b-a887-326f5d3da623">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Siscom"/>
+	<queryString>
+		<![CDATA[SELECT * FROM produto]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="preco_compra" class="java.lang.Float"/>
+	<field name="preco_venda" class="java.lang.Float"/>
+	<field name="quantidade_estoque" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="554" height="78" uuid="487848ab-cd56-4769-939c-5c2f11b10054"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="49" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[PRODUTOS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20">
+			<staticText>
+				<reportElement x="7" y="0" width="122" height="20" uuid="2eddb68c-9d85-4f86-870a-36274083f3ea"/>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="0" width="108" height="20" uuid="b53c1518-524b-487d-be21-ec7fa8442b90"/>
+				<text><![CDATA[Preço de Compra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="0" width="110" height="20" uuid="a5053672-8058-4500-a621-84d78c5227b6"/>
+				<text><![CDATA[Preço Venda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="131" height="20" uuid="0f6b4626-7a0c-41cf-9057-6ba87d3610c2"/>
+				<text><![CDATA[Quantidade Estoque]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="7" y="4" width="122" height="20" uuid="d6fa5dc3-179c-4323-9218-a99c144b6c80"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="3" width="108" height="20" uuid="999f2349-a846-4af1-a88b-d1a138675e9c"/>
+				<textFieldExpression><![CDATA["R$ " + new DecimalFormat("#,###.00").format($F{preco_compra})
+
+]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="271" y="4" width="110" height="20" uuid="6772a5d8-0af2-4b24-b571-cc2113fac26c"/>
+				<textFieldExpression><![CDATA["R$ " + new DecimalFormat("#,###.00").format($F{preco_venda})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="5" width="131" height="20" uuid="b8cd3c65-4c41-4f7c-b2a4-50660d0d35d1"/>
+				<textFieldExpression><![CDATA[$F{quantidade_estoque}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="51">
+			<textField evaluationTime="Report">
+				<reportElement x="454" y="31" width="100" height="20" uuid="0a13c46a-ef52-4b1c-8356-84bf85ac90cc"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="354" y="31" width="100" height="20" uuid="606f3466-e536-426f-b30f-1af4870789ac"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
